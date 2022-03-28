@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: url('./assets/image/Depositphotos_61868743_s-2019.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.App {
+  color: #fff;
+  background: rgba(55, 61, 75, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  height: 100vh;
+
+  .custom-rounded {
+    border-radius: 20px;
+  }
+
+  #logout {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+
+  .card {
+    background: #242831;
+    overflow: hidden;
+    border: none;
+    // box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+
+    &.weather-card {
+      // max-width: 600px;
+      margin: auto;
+      .card-body {
+        padding: 0;
+      }
+    }
+
+    .card-left {
+      border-radius: 20px;
+      background: rgb(152, 223, 233);
+      background: -moz-linear-gradient(
+        135deg,
+        rgba(152, 223, 233, 1) 0%,
+        rgba(64, 71, 162, 1) 100%
+      );
+      background: -webkit-linear-gradient(
+        135deg,
+        rgba(152, 223, 233, 1) 0%,
+        rgba(64, 71, 162, 1) 100%
+      );
+      background: linear-gradient(
+        135deg,
+        rgba(152, 223, 233, 1) 0%,
+        rgba(64, 71, 162, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#98dfe9",endColorstr="#4047a2",GradientType=1);
+    }
+
+    .bg-dark {
+      background: #22272d !important;
+
+      font-weight: 200;
+    }
+  }
+
+  .login-container {
+    padding-top: 30%;
+  }
+}
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

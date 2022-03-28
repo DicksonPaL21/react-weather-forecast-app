@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './styles.scss';
+
+import SignIn from './components/SignIn';
+import Home from './components/Home';
+import Weather from './components/Weather';
 
 function App() {
+  const { user, isLoading, logout } = useAuth0();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {user && !isLoading && (
+        <button
+          id="logout"
+          type="button"
+          className="btn btn-outline-light"
+          onClick={() => logout({ returnTo: window.location.origin })}
         >
-          Learn React
-        </a>
-      </header>
+          Log Out
+        </button>
+      )}
+      <Router forceRefresh={true}>
+        <Switch>
+          <Route exact path="/">
+            <SignIn />
+          </Route>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route exact path="/weather">
+            <Weather />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
