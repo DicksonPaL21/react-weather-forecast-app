@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import moment from 'moment';
 
@@ -7,22 +8,12 @@ import Card from './Card';
 import Loader from './Loader';
 
 const Weather = ({ ...props }) => {
-  const [weather, setWeather] = useState(null);
-  const { user, isLoading, isAuthenticated } = useAuth0();
-
-  useEffect(() => {
-    if (!user && !isLoading && !isAuthenticated) window.location.replace('/');
-  }, [user, isLoading, isAuthenticated]);
-
-  useEffect(() => {
-    const weather = JSON.parse(sessionStorage.getItem('weather'));
-    if (weather) setWeather(weather);
-    else window.location.replace('/home');
-  }, []);
+  const history = useHistory();
+  const { isLoading } = useAuth0();
+  const { weather } = props.location.state;
 
   const handleOnBack = () => {
-    sessionStorage.removeItem('weather');
-    window.location.assign('/home');
+    history.push('/home');
   };
 
   if (isLoading) {

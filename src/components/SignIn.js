@@ -1,16 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { GithubLoginButton } from 'react-social-login-buttons';
 import { useAuth0 } from '@auth0/auth0-react';
 
 // Components
 import Card from './Card';
+import Loader from './Loader';
 
-const SingIn = () => {
-  const { user, isLoading, isAuthenticated, loginWithRedirect } = useAuth0();
+const SingIn = ({ ...props }) => {
+  const history = useHistory();
+  const { isLoading, isAuthenticated, loginWithRedirect } = useAuth0();
 
-  useEffect(() => {
-    if (user && !isLoading && isAuthenticated) window.location.replace('/home');
-  }, [user, isLoading, isAuthenticated]);
+  if (isAuthenticated) {
+    history.push('/home');
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="container">
